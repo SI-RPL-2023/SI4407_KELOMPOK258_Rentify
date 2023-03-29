@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('id_property')->unsigned()->index()->nullable();
             $table->foreign('id_property')->references('id')->on('property');
+            $table->bigInteger('id_user')->unsigned()->index()->nullable();
             $table->foreign('id_user')->references('id')->on('users');
             $table->string('status_pembayaran');
             $table->timestamp('created_at')->useCurrent();
