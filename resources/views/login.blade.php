@@ -15,7 +15,16 @@
 <body>
   <div class="wrapper">
     <header>Login Form</header>
-    <form action="#">
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </div>
+    @endif
+    <form action="#" method="POST">
+      @csrf
+      @method('POST')
       <div class="field email">
         <div class="input-area">
           <input type="text" placeholder="Email Address">
