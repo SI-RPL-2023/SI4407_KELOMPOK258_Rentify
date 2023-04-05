@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('chart', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_property')->unsigned()->index()->nullable();
             $table->foreign('id_property')->references('id')->on('property');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('chart');
     }
 };

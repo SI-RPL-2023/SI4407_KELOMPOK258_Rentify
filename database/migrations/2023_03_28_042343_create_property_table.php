@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('property', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_pmilik')->unsigned()->index()->nullable();
-            $table->foreign('id_pmilik')->references('id')->on('users');
+            $table->bigInteger('id_penyewa')->unsigned()->index()->nullable();
+            $table->foreign('id_penyewa')->references('id')->on('users');
             $table->string('property_name',255);
             $table->string('category',255);
             $table->string('price',255);
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('lokasi');
             $table->string('image',255);
-            $table->string('rating',255)->nullable();
+            $table->string('rating',255);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
