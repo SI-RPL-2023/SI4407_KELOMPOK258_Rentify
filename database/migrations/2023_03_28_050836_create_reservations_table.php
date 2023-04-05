@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('id_property')->references('id')->on('property');
             $table->bigInteger('id_user')->unsigned()->index()->nullable();
             $table->foreign('id_user')->references('id')->on('users');
+            $table->date('tanggal_sewa');
             $table->string('status_pembayaran');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
