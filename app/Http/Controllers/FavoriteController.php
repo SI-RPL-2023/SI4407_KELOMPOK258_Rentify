@@ -48,6 +48,6 @@ class FavoriteController extends Controller
         $property = Favorite::find($id);
         unlink("storage/$property->image");
         $property->delete();
-        return redirect('/product')->with('success', 'Property berhasil dihapus');
+        return redirect('/product')->with('success', 'Property berhasil dihapus dari favorit');
     }
 }

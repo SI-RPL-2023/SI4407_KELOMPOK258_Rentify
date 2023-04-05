@@ -25,7 +25,7 @@ class ReviewController extends Controller
         ]);
 
 
-        return redirect('/history')->with('success', 'Property ditambahkan ke favorit');
+        return redirect('/history')->with('success', 'Terima kasih atas review anda');
     }
 
     public function update(Request $request, $id)
@@ -46,7 +46,7 @@ class ReviewController extends Controller
             'rating' => $request->rating,
             'review' => $request->review,
         ]);
-        return redirect('/product')->with('success', 'Property berhasil diupdate');
+        return redirect('/product')->with('success', 'Review berhasil diupdate');
     }
 
     public function destroy($id)
@@ -54,6 +54,6 @@ class ReviewController extends Controller
         $property = Review::find($id);
         
         $property->delete();
-        return redirect('/product')->with('success', 'Property berhasil dihapus');
+        return redirect('/product')->with('success', 'Review berhasil dihapus');
     }
 }

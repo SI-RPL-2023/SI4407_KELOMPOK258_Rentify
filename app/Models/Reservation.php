@@ -11,6 +11,7 @@ class Reservation extends Model
     protected $fillable = [
         'id_property',
         'id_user',
+        'tanggal_sewa',
         'status_pembayaran'
         
     ];
