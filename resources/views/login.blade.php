@@ -22,12 +22,12 @@
       @endforeach
     </div>
     @endif
-    <form action="#" method="POST">
+    <form action="/login" method="POST">
       @csrf
       @method('POST')
       <div class="field email">
         <div class="input-area">
-          <input type="text" placeholder="Email Address">
+          <input type="text" placeholder="Email Address" name="email" id="email">
           <i class="icon fas fa-envelope"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -35,7 +35,7 @@
       </div>
       <div class="field password">
         <div class="input-area">
-          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Password" name="password" id="password">
           <i class="icon fas fa-lock"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -44,7 +44,7 @@
       <div class="pass-txt"><a href="#">Forgot password?</a></div>
       <input type="submit" value="Login">
     </form>
-    <div class="sign-txt">Not yet member? <a href="registrasi.html">Signup</a></div>
+    <div class="sign-txt">Not yet member? <a href="/register">Signup</a></div>
   </div>
 
   <script src="script.js"></script>

@@ -23,7 +23,7 @@
       @method('POST')
       <div class="field name">
         <div class="input-area">
-          <input type="text" id="name" placeholder="Name">
+          <input type="text" id="nama" placeholder="Name" name="nama">
           <i class="icon fas fa-user"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -31,7 +31,7 @@
       </div>
       <div class="field phone">
         <div class="input-area">
-          <input type="text" id="phone" placeholder="Phone">
+          <input type="text" id="no_hp" placeholder="Phone" name="no_hp">
           <i class="icon fas fa-phone"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -39,7 +39,7 @@
       </div>
       <div class="field address">
         <div class="input-area">
-          <input type="text" id="address" placeholder="Address">
+          <input type="text" id="alamat" placeholder="Address" name="alamat">
           <i class="icon fas fa-address-card"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -47,7 +47,7 @@
       </div>
       <div class="field email">
         <div class="input-area">
-          <input type="email" id="email" placeholder="Email Address">
+          <input type="email" id="email" placeholder="Email Address" name="email">
           <i class="icon fas fa-envelope"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -55,7 +55,7 @@
       </div>
       <div class="field password">
         <div class="input-area">
-          <input type="password" id="password" placeholder="Password">
+          <input type="password" id="password" placeholder="Password" name="password">
           <i class="icon fas fa-lock"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
@@ -63,7 +63,7 @@
       </div>
       <div class="field access">
         <div class="input-area">
-          <select name="access" id="access" aria-placeholder="Access Type">
+          <select name="access_type" id="access_type" aria-placeholder="Access Type">
             <option value="Penyewa">Penyewa</option>
             <option value="Pemilik">Pemilik</option>
             <option value="Admin">Admin</option>
@@ -76,7 +76,7 @@
       </div>
       <input type="submit" value="Login">
     </form>
-    <div class="sign-txt">Sudah punya akun? <a href="index.html">Login</a></div>
+    <div class="sign-txt">Sudah punya akun? <a href="/login">Login</a></div>
   </div>
 
   <script src="script.js"></script>
