@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
 
-      <link rel="apple-touch-icon" href="logo.png">
-      <link rel="shortcut icon" type="image/x-icon" href="logo.ico">
+      <link rel="apple-touch-icon" href="assets/img/logo.png">
+      <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.ico">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
@@ -44,10 +44,10 @@
       <div class="pass-txt"><a href="#">Forgot password?</a></div>
       <input type="submit" value="Login">
     </form>
-    <div class="sign-txt">Not yet member? <a href="/register">Signup</a></div>
+    <div class="sign-txt">Not yet member? <a href="/registrasi">Signup</a></div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="assets/js/script.js"></script>
 
 </body>
 </html>
