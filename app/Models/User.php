@@ -26,6 +26,22 @@ class User extends Authenticatable
         'access_type'
     ];
 
+    public function histories() {
+    return $this->hasMany(History::class);
+    }
+
+    public function favorites() {
+        return $this->hasMany(Favorite::class);
+        }
+
+    public function properties() {
+    return $this->hasMany(Property::class);
+    }
+
+    public function reservations() {
+        return $this->hasMany(Reservation::class);
+        }
+
     /**
      * The attributes that should be hidden for serialization.
      *

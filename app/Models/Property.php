@@ -20,4 +20,17 @@ class Property extends Model
         'rating'
         
     ];
+
+    public function histories() {
+        return $this->hasMany(History::class);
+        }
+
+    public function favorites() {
+        return $this->hasMany(Favorite::class);
+        }
+
+    public function reviews() {
+        return $this->hasMany(Review::class);
+        }
+        
 }
