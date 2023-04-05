@@ -25,7 +25,7 @@ class ReservationController extends Controller
         ]);
 
 
-        return redirect('/history')->with('success', 'Property ditambahkan ke favorit');
+        return redirect('/history')->with('success', 'Reserrvasi berhasil');
     }
 
     public function update(Request $request, $id)
@@ -46,7 +46,7 @@ class ReservationController extends Controller
             'tanggal_sewa' => $request->tanggal_sewa,
             'status_pembayaran' => $request->status_pembayaran,
         ]);
-        return redirect('/product')->with('success', 'Property berhasil diupdate');
+        return redirect('/product')->with('success', 'Reservasi berhasil diupdate');
     }
 
     public function destroy($id)
@@ -54,6 +54,6 @@ class ReservationController extends Controller
         $property = Reservation::find($id);
         
         $property->delete();
-        return redirect('/product')->with('success', 'Property berhasil dihapus');
+        return redirect('/product')->with('success', 'Reservasi berhasil dihapus');
     }
 }

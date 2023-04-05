@@ -23,7 +23,7 @@ class HistoryController extends Controller
 
 
 
-        return redirect('/product')->with('success', 'Property ditambahkan ke favorit');
+        return redirect('/product');
     }
 
     public function update(Request $request, $id)
@@ -40,7 +40,7 @@ class HistoryController extends Controller
             'id_property' => $request->id_property,
             'id_user' => $request->id_user,
         ]);
-        return redirect('/product')->with('success', 'Property berhasil diupdate');
+        return redirect('/product');
     }
 
     public function destroy($id)
@@ -48,6 +48,6 @@ class HistoryController extends Controller
         $property = History::find($id);
         unlink("storage/$property->image");
         $property->delete();
-        return redirect('/product')->with('success', 'Property berhasil dihapus');
+        return redirect('/product');
     }
 }
