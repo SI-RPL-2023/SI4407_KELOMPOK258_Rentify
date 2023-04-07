@@ -19,8 +19,10 @@ return new class extends Migration
             $table->string('category',255);
             $table->string('price',255);
             $table->string('availability',255);
+            $table->string('kapasitas',255);
+            $table->text('fasilitas');
             $table->text('description');
-            $table->text('lokasi');
+            $table->string('lokasi',255);
             $table->string('image',255);
             $table->string('rating',255)->nullable();
             $table->timestamp('created_at')->useCurrent();
