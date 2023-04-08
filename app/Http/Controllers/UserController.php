@@ -38,11 +38,11 @@ class UserController extends Controller
         ]);
 
         User::create([
+            'nama' => $request->nama,
             'email' => $request->email,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
             'password' => bcrypt($request->password),
-            'nama' => $request->nama,
             'access_type' => $request->access_type
         ]);
 
