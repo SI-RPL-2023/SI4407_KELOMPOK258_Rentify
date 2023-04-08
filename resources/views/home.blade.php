@@ -16,7 +16,7 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<!--
+
     
 
 </head>
@@ -30,7 +30,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="/"><img src="assets/img/logo.png" alt="" style="width:50px ;">
                 Rentify
             </a>
 
@@ -42,37 +42,91 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-evenly mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
+                        @if (Auth::user())
+                        @if (Auth::check() && Auth::user()->access_type == 'Pemilik' or Auth::user()->access_type == 'Penyewa')
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Property</a>
+                            <a class="nav-link" href="">Property</a>
                         </li>
+                        @endif
+                        @endif
+
+                        @if (Auth::user())
+                        @if (Auth::check() && Auth::user()->access_type == 'Pemilik')
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="">My Property</a>
+                        </li>
+                        @endif
+                        @endif
+                        
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/aboutus">About</a>
                         </li>
                         
+
+                        @if (Auth::user())
+                        @if (Auth::check() && Auth::user()->access_type == 'Admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="">List Gedung</a>
+                        </li>
+                        @endif
+                        @endif
+
+                        @if (Auth::user())
+                        @if (Auth::check() && Auth::user()->access_type == 'Admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Users</a>
+                        </li>
+                        @endif
+                        @endif
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
+                            <form action="/search" method="post">
+                            @csrf
+                            @method('POST')
+                                <input type="text" class="form-control" id="search" placeholder="Masukkan Kota">
+                                <div class="input-group-text">
+                                    <i class="fa fa-fw fa-search"></i>
+                                </div>
+                            </form>
+                            
                         </div>
                     </div>
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <i class="fa fa-fw fa-heart text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                    
+                    @if(Auth::user())
+                <div class="nav-item dropdown">
+                    <a class="nav-icon position-relative text-decoration-none nav-link dropdown-toggle" data-bs-toggle="dropdown">{{Auth::user()->name}}
+                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
+                    <div class="dropdown-menu m-0">
+                        <a href="/profile" class="dropdown-item">Profile</a>
+                        <a href="/logout" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+                @else
+                <a class="nav-icon position-relative text-decoration-none nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        
+                <div class="dropdown-menu m-0">
+                        <a href="/login" class="dropdown-item">Login</a>
+                        
+                    </div>
+                        
+                    </a>
+                    @endif
                 </div>
             </div>
 
@@ -111,7 +165,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/smesco.png" alt="">
+                            <img class="img-fluid" src="assets/img/smesco.png" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left align-self-center">
@@ -128,7 +182,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/smesco3.png" alt="">
+                            <img class="img-fluid" src="assets/img/smesco3.png" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
@@ -147,7 +201,7 @@
                 <div class="container">
                     <div class="row p-5">
                         <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/ayaka.png" alt="">
+                            <img class="img-fluid" src="assets/img/ayaka.png" alt="">
                         </div>
                         <div class="col-lg-6 mb-0 d-flex align-items-center">
                             <div class="text-align-left">
@@ -172,7 +226,8 @@
     </div>
     <!-- End Banner Hero -->
 
-
+    @if (Auth::user())
+    @if (Auth::check() && Auth::user()->access_type == 'Pemilik' or Auth::user()->access_type == 'Penyewa')
     <!-- Start Featured Product -->
     <section class="bg-light">
         <div class="container py-5">
@@ -185,7 +240,7 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="./assets/img/ayaka.png" class="card-img-top" alt="...">
+                            <img src="assets/img/ayaka.png" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -210,7 +265,7 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="./assets/img/cyber2tower.png" class="card-img-top" alt="...">
+                            <img src="assets/img/cyber2tower.png" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -235,7 +290,7 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="shop-single.html">
-                            <img src="./assets/img/smesco2.png" class="card-img-top" alt="...">
+                            <img src="assets/img/smesco2.png" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
@@ -261,7 +316,8 @@
         </div>
     </section>
     <!-- End Featured Product -->
-
+    @endif
+    @endif
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
