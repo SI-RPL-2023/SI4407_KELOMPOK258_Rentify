@@ -14,6 +14,7 @@
 </head>
 <body>
   <div class="wrapper">
+    <img src="assets/img/logo.png" alt="" width="100px">
     <header>Login Form</header>
     @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -25,13 +26,13 @@
     <form action="/login" method="POST">
       @csrf
       @method('POST')
-      <div class="field email">
+      <div class="field nama">
         <div class="input-area">
-          <input type="text" placeholder="Email Address" name="email" id="email">
+          <input type="text" placeholder="Username" name="nama" id="nama">
           <i class="icon fas fa-envelope"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
-        <div class="error error-txt">Email can't be blank</div>
+        <div class="error error-txt">Username can't be blank</div>
       </div>
       <div class="field password">
         <div class="input-area">
