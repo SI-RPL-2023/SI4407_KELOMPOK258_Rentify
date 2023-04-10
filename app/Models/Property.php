@@ -14,7 +14,9 @@ class Property extends Model
         'category',
         'price',
         'availability',
+        'kapasitas',
         'description',
+        'fasilitas',
         'lokasi',
         'image',
         'rating'

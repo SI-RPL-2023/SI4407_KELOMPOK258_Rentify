@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('property', function (Blueprint $table) {
+        Schema::create('properties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_pmilik')->unsigned()->index()->nullable();
-            $table->foreign('id_pmilik')->references('id')->on('users');
+            $table->foreign('id_pemilik')->references('id')->on('users');
             $table->string('property_name',255);
             $table->string('category',255);
-            $table->string('price',255);
+            $table->bigInteger('price',255);
             $table->string('availability',255);
             $table->string('kapasitas',255);
             $table->text('fasilitas');
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('property');
+        Schema::dropIfExists('properties');
     }
 };
