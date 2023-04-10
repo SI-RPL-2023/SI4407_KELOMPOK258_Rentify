@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>About Rentify</title>
+    <title>Rentify</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,14 +16,14 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/css/fontawesome.min.css">
-<!--
+
     
 
 </head>
 
 <body>
 
-    <-- Close Top Nav -->
+    <!-- Close Top Nav -->
 
 
     <!-- Header -->
@@ -47,7 +47,7 @@
                         @if (Auth::user())
                         @if (Auth::check() && Auth::user()->access_type == 'Pemilik' or Auth::user()->access_type == 'Penyewa')
                         <li class="nav-item">
-                            <a class="nav-link" href="">Property</a>
+                            <a class="nav-link" href="/property">Property</a>
                         </li>
                         @endif
                         @endif
@@ -55,7 +55,7 @@
                         @if (Auth::user())
                         @if (Auth::check() && Auth::user()->access_type == 'Pemilik')
                         <li class="nav-item">
-                            <a class="nav-link" href="">My Property</a>
+                            <a class="nav-link" href="/my_property/{{Auth::user()->id}}">My Property</a>
                         </li>
                         @endif
                         @endif
@@ -140,9 +140,11 @@
             <div class="w-100 pt-1 mb-5 text-right">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <form action="/search" method="get" class="modal-content modal-body border-0 p-0">
+                @csrf
+                @method('GET')
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ">
+                    <input type="text" class="form-control" id="search" name="search" placeholder="Masukkan nama kota">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
