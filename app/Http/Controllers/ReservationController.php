@@ -13,6 +13,7 @@ class ReservationController extends Controller
             'id_property' => 'required',
             'id_user' => 'required',
             'tanggal_sewa' => 'required',
+            'durasi' => 'required',
             'status_pembayaran' => 'required'
             
         ]);
@@ -21,6 +22,7 @@ class ReservationController extends Controller
             'id_property' => $request->id_property,
             'id_user' => $request->id_user,
             'tanggal_sewa' => $request->tanggal_sewa,
+            'durasi' => $request->durasi,
             'status_pembayaran' => $request->status_pembayaran,
         ]);
 
@@ -34,6 +36,7 @@ class ReservationController extends Controller
             'id_property' => 'required',
             'id_user' => 'required',
             'tanggal_sewa' => 'required',
+            'durasi' => 'required',
             'status_pembayaran' => 'required'
         ]);
 
@@ -44,9 +47,10 @@ class ReservationController extends Controller
             'id_property' => $request->id_property,
             'id_user' => $request->id_user,
             'tanggal_sewa' => $request->tanggal_sewa,
+            'durasi' => $request->durasi,
             'status_pembayaran' => $request->status_pembayaran,
         ]);
-        return redirect('/product')->with('success', 'Reservasi berhasil diupdate');
+        return redirect('/history')->with('success', 'Reservasi berhasil diupdate');
     }
 
     public function destroy($id)
@@ -54,6 +58,6 @@ class ReservationController extends Controller
         $property = Reservation::find($id);
         
         $property->delete();
-        return redirect('/product')->with('success', 'Reservasi berhasil dihapus');
+        return redirect('/history')->with('success', 'Reservasi berhasil dihapus');
     }
 }

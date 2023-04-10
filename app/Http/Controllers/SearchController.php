@@ -10,7 +10,7 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $searchTerm = $request->input('search');
-        $results = Property::where('column_name', 'like', '%' . $searchTerm . '%')->get();
-        return view('search-results', compact('results'));
+        $data = Property::where('lokasi', 'like', '%' . $searchTerm . '%')->get();
+        return view('property', compact('data'));
     }
 }
