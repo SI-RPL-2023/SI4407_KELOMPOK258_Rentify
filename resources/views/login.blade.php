@@ -29,7 +29,7 @@
       <div class="field nama">
         <div class="input-area">
           <input type="text" placeholder="Username" name="nama" id="nama">
-          <i class="icon fas fa-envelope"></i>
+          <i class="icon fas fa-user"></i>
           <i class="error error-icon fas fa-exclamation-circle"></i>
         </div>
         <div class="error error-txt">Username can't be blank</div>

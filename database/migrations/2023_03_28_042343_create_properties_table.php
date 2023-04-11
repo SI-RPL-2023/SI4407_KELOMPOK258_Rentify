@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_pmilik')->unsigned()->index()->nullable();
+            $table->bigInteger('id_pemilik')->unsigned()->index()->nullable();
             $table->foreign('id_pemilik')->references('id')->on('users');
             $table->string('property_name',255);
             $table->string('category',255);
