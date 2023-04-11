@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('properties', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->primary();
             $table->bigInteger('id_pemilik')->unsigned()->index()->nullable();
             $table->foreign('id_pemilik')->references('id')->on('users');
             $table->string('property_name',255);
