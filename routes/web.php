@@ -49,7 +49,7 @@ Route::get('/detail/{id}', function ($id) {
 
 Route::get('/my_property/{id}', function ($id) {
     $data = DB::table('properties')->where('id_pemilik', $id)->first();
-    return view('myProperty', ['data' => $data]);
+    return view('myproperty', ['data' => $data]);
 });
 
 Route::get('/reservasi/{id}', function ($id) {

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Menambahkan Property</title>
+    <title>{{Auth::user()->name}} Property</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -153,7 +153,7 @@
         </div>
     </div>
 
-    <!-- Start Content -->
+    Start Content
     <div class="container py-5">
         <div class="row">
 
