@@ -88,7 +88,7 @@
                     </a>
                     <div class="dropdown-menu m-0">
                         <a href="/profile" class="dropdown-item">Profile</a>
-                        <a href="/logout" class="dropdown-item">Logout</a>
+                        <a href="/logout/{{Auth::user()->id}}" class="dropdown-item">Logout</a>
                     </div>
                 </div>
                 @else

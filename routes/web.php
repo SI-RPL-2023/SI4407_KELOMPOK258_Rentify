@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
@@ -44,13 +45,15 @@ Route::get('/property', function () {
 
 Route::get('/detail/{id}', function ($id) {
     $data = DB::table('properties')->where('id', $id)->first();
-    return view('detail', ['data' => $data]);
+    return view('DetailProperty', ['data' => $data]);
 });
 
 Route::get('/my_property/{id}', function ($id) {
     $data = DB::table('properties')->where('id_pemilik', $id)->first();
-    return view('myproperty', ['data' => $data]);
+    return view('myProperty', ['data' => $data]);
 });
+
+
 
 Route::get('/reservasi/{id}', function ($id) {
     $data = DB::table('properties')->where('id', $id)->first();
@@ -58,6 +61,10 @@ Route::get('/reservasi/{id}', function ($id) {
 });
 
 
+Route::get('/profile', function () {
+    $data = User::find(Auth::user()->id);
+    return view('profile', ['data' => $data]);
+});
 
 
 
