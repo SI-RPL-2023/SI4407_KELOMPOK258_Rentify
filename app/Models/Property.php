@@ -24,6 +24,13 @@ class Property extends Model
         
     ];
 
+    
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'id_property');
+    }
+
+
     public function user()
     {
         return $this->belongsTo(User::class, 'id_pemilik', 'id');

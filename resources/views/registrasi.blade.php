@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="assets/css/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
+
 <body>
+@include('alert')
   <div class="wrapper">
   <img src="assets/img/logo.png" alt="" width="100px">
     <header>Registration Form</header>

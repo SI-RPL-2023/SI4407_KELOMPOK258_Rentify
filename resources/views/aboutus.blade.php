@@ -13,7 +13,7 @@
     
     @include('modal')
 
-
+    @include('alert')
 
     <section class="bg-success py-5">
         <div class="container">

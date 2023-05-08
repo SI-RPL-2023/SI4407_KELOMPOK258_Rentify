@@ -28,6 +28,14 @@
                         @endif
 
                         @if (Auth::user())
+                        @if (Auth::check() && Auth::user()->access_type == 'Penyewa')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/history/{{Auth::user()->id}}">History</a>
+                        </li>
+                        @endif
+                        @endif
+
+                        @if (Auth::user())
                         @if (Auth::check() && Auth::user()->access_type == 'Pemilik')
                         <li class="nav-item">
                             <a class="nav-link" href="/my_property/{{Auth::user()->id}}">My Property</a>
@@ -75,10 +83,18 @@
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    @if(Auth::user())
+                    <a class="nav-icon position-relative text-decoration-none" href="/favorite/{{Auth::user()->id}}">
                         <i class="fa fa-fw fa-heart text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">
+                            </span>
                     </a>
+                    @else
+                    <a class="nav-icon position-relative text-decoration-none" href="">
+                        <i class="fa fa-fw fa-heart text-dark mr-1"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+                    @endif
                     
                     @if(Auth::user())
                 <div class="nav-item dropdown">
@@ -88,7 +104,7 @@
                     </a>
                     <div class="dropdown-menu m-0">
                         <a href="/profile" class="dropdown-item">Profile</a>
-                        <a href="/logout/{{Auth::user()->id}}" class="dropdown-item">Logout</a>
+                        <a href="/logout" class="dropdown-item">Logout</a>
                     </div>
                 </div>
                 @else

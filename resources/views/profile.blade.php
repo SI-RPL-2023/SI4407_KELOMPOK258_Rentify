@@ -59,6 +59,7 @@
     <body>
     @include('navbar')
     @include('modal')
+    @include('alert')
     
     <div class="container rounded bg-white mt-5 mb-5" id="bigcard">
         <div class="row">

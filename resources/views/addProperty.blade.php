@@ -12,6 +12,8 @@
     
     @include('modal')
 
+    @include('alert')
+
     <!-- Form Start-->
     <div class="container">
         <div class="row">
