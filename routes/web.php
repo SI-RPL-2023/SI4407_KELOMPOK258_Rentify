@@ -4,6 +4,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Models\Property;
 use App\Models\User;
@@ -49,7 +50,8 @@ Route::get('/property', function () {
 
 Route::get('/detail/{id}', function ($id) {
     $data = DB::table('properties')->where('id', $id)->first();
-    return view('DetailProperty', ['data' => $data]);
+    $price = 'Rp ' . number_format($data->price / 1, 2);
+    return view('DetailProperty', compact('data', 'price'));
 });
 
 Route::get('/my_property/{id}', function ($id) {
@@ -82,9 +84,22 @@ Route::get('/after_payment', function () {
 
 
 Route::get('/history', function () {
-    $data = DB::table('reservations')->where('id_user', Auth::id())->first();
+    $data = DB::table('histories')->where('id_user', Auth::id())->first();
+    $reservasi = DB::table('reservations')->where('id', $data->id_reservasi)->get();
+    $property = DB::table('properties')->where('id', $data->id_property)->first();
+    $formattedPrice = 'Rp ' . number_format($property->price / 1, 2);
     
-    return view('history_penyewa', ['data' => $data]);
+    return view('history_penyewa', compact('property', 'reservasi', 'formattedPrice'));
+});
+
+Route::get('/review/{id}', function ($id) {
+    $data = DB::table('reviews')->where('id_property', $id)->first();
+    return view('review_add', ['data' => $data]);
+});
+
+Route::get('/review_add/{add}', function ($id) {
+    $data = DB::table('properties')->where('id', $id)->first();
+    return view('review_add', ['data' => $data]);
 });
 
 Route::get('/profile', function () {
@@ -102,4 +117,5 @@ Route::post('/add_property', [PropertyController::class, 'store']);
 Route::post('/favorite', [FavoriteController::class, 'store']);
 Route::get('/favorite_delete/{id}', [FavoriteController::class, 'destroy']);
 Route::post('/reservasi', [ReservationController::class, 'store']);
-Route::get('/after_payment/{id}', [HistoryController::class, 'store']);
+Route::post('/after_payment/{id}', [HistoryController::class, 'store']);
+Route::post('/review_add/{id}', [ReviewController::class, 'store']);
