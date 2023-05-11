@@ -8,6 +8,28 @@
 
 </head>
 <style>
+    .btn-group button {
+        
+        padding: 10px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        float: left; /* Float the buttons side by side */
+    }
+
+    /* Clear floats (clearfix hack) */
+    .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .btn-group button:not(:last-child) {
+        border-right: none; /* Prevent double borders */
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        background-color: #3e8e41;
+    }
     .radio-img {
         display: block;
     }
@@ -20,31 +42,31 @@
     @include('alert')
 
     <!-- Form Start-->
-    <div class="container">
-        <div class="row">
-          <div class="col-8">
+    <center><div class="container">
+        
+          
 <br><br>
-            <h3>Pembayaran</h3><p>Pilih metode pembayaran</p><br><br>
-            <img src="{{ asset('assets/img/success.gif') }}" alt="image error">
+            <h3>Pembayaran</h3><p>Pembayaran berhasil</p><br><br>
+            <img src="{{ asset('assets/img/success.gif') }}" alt="image error" style="width: 200px;">
             <br><br>
             
             <div class="btn-group">
                 <form action="/" method="get">
                     @csrf
                     @method('GET')
-                    <button id="hapus" class="btn btn-primary"  style="background-color: #df6f6f; width:100%;">Hapus</button></center>
+                    <button id="hapus" class="btn btn-success btn-lg" >Kembali ke beranda</button>
                 </form>
                                 
                 <form action="/history" method="get">
                     @csrf
                     @method('GET')
-                    <button id="edit" class="btn btn-primary" style="background-color: #70bee5; width:100%;">Edit</button></center>
+                    <button id="edit" class="btn btn-success btn-lg" >Riwayat</button>
                 </form>
             </div>
-          </div>
+          
 
         </div>
-      </div>
+      </div></center>
       <!-- Form End-->
 <br>
 @include('footer')

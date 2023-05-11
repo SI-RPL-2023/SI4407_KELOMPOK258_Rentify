@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UserController;
@@ -73,12 +74,12 @@ Route::get('/payment/{id}', function ($id) {
     $data = DB::table('properties')->where('id', $id)->first();
     $total = DB::table('reservations')->where('id_user', Auth::id())->first();
     return view('payment', compact('data', 'total'));
+})->name('payment');
+
+Route::get('/after_payment', function () {
+    return view('after_payment');
 });
 
-Route::get('/after_payment/{id}', function ($id) {
-    $data = DB::table('properties')->where('id', $id)->first();
-    return view('after_payment', ['data' => $data]);
-});
 
 Route::get('/history', function () {
     $data = DB::table('reservations')->where('id_user', Auth::id())->first();
@@ -101,3 +102,4 @@ Route::post('/add_property', [PropertyController::class, 'store']);
 Route::post('/favorite', [FavoriteController::class, 'store']);
 Route::get('/favorite_delete/{id}', [FavoriteController::class, 'destroy']);
 Route::post('/reservasi', [ReservationController::class, 'store']);
+Route::get('/after_payment/{id}', [HistoryController::class, 'store']);

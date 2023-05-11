@@ -13,7 +13,7 @@ class Reservation extends Model
         'id_user',
         'tanggal_sewa',
         'durasi',
-        'status_pembayaran'
+        'total'
         
     ];
 

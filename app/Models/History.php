@@ -18,4 +18,9 @@ class History extends Model
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
+
+    public function property()
+    {
+        return $this->belongsTo(Property::class, 'id', 'id_property');
+    }
 }
