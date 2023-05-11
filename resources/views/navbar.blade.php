@@ -31,7 +31,7 @@
                         @if (Auth::user())
                         @if (Auth::check() && Auth::user()->access_type == 'Penyewa')
                         <li class="nav-item">
-                            <a class="nav-link" href="/history">History</a>
+                            <a class="nav-link" href="/history/{{Auth::user()->id}}">History</a>
                         </li>
                         @endif
                         @endif

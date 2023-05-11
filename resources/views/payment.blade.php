@@ -25,20 +25,11 @@
           <div class="col-8">
 <br><br>
             <h3>Pembayaran</h3><p>Pilih metode pembayaran</p><br><br>
-            @if (count($errors) > 0)
-            <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-            </div>
-            @endif
-            <form action="/after_payment/{{$data->id}}" method="POST" enctype="multipart/form-data" >
-            @csrf
-            @method('POST')
-
-            <input type="hidden" name="id_property" value="{{$data->id}}">
-              <input type="hidden" name="id_reservasi" value="{{$total->id}}">
             
+            <form action="/after_payment/{{$data->id}}" method="get" enctype="multipart/form-data" >
+            @csrf
+            @method('get')
+
             <div class="mb-3">
                 <div class="radio-img">
                     <input type="radio" name="bank" id="mandiri" value="mandiri">
@@ -84,10 +75,12 @@
               <label for="exampleFormControlInput1" class="form-label"> <b>Detail reservasi</b></label>
               <p>Nama Gedung                    : {{$data->property_name}}</p>
               <p>alamat                         : {{$data->lokasi}}</p>
-              <b><h4>Total yang harus dibayar    : {{'Rp ' .number_format($total->total / 1, 2)}}</h4></b>
+              <b><h4>Total yang harus dibayar    : {{$total->total}}</h4></b>
             </div>
 
-            
+            <div class="mb-3">
+              <input type="hidden" name="id_reservasi" value="{{$total->id}}">
+            </div>
 
             
 
