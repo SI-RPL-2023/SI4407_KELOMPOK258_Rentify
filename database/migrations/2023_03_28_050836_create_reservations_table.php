@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('id_user')->references('id')->on('users');
             $table->date('tanggal_sewa');
             $table->bigInteger('durasi');
-            $table->string('status_pembayaran');
+            $table->bigInteger('total');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

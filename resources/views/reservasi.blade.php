@@ -30,14 +30,20 @@
             @csrf
             @method('post')
 
+            
+
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"> <b>ID Akun (otomatis)</b></label>
-              <input type="text" class="form-control" placeholder="..." name="id_pemilik" value="{{Auth::user()->id}}" readonly>
+              
+              <input type="hidden" class="form-control"  name="id_property" value="{{$data->id}}" readonly>
             </div>
 
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"> <b>ID Gedung (otomatis)</b></label>
-              <input type="text" class="form-control" placeholder="..." name="id_pemilik" value="{{$data->id}}" readonly>
+              
+              <img src="{{ asset('storage/'.$data->image) }}" style="width: 300px;" alt="">
+            </div>
+            <div class="mb-3">
+              
+              <h2>{{$data->property_name}}</h2>
             </div>
 
             <div class="mb-3">
@@ -46,7 +52,7 @@
             </div>
 
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"> <b>Durasi Sewa</b></label>
+              <label for="exampleFormControlInput1" class="form-label"> <b>Durasi Sewa (Jam)</b></label>
               <input type="number" class="form-control"  name="durasi">
             </div>
 

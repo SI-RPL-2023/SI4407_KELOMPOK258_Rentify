@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreign('id_property')->references('id')->on('properties');
             $table->bigInteger('id_user')->unsigned()->index()->nullable();
             $table->foreign('id_user')->references('id')->on('users');
+            $table->bigInteger('id_reservasi')->unsigned()->index()->nullable();
+            $table->foreign('id_reservasi')->references('id')->on('reservations');
         });
     }
 
