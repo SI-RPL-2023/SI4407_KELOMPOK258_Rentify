@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif
+}
+
+.pic {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.table thead {
+    background-color: #1fc055;
+}
+
+.table thead th {
+    padding: 30px;
+    font-size: 14px;
+    color: white;
+}
+
+.container .table-wrap {
+
+    margin: 20px auto;
+    overflow-x: auto
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #3094d6;
+    border-color: #3094d6;
+    padding: 0.6rem 1.50rem
+}
+
+.container .table-wrap::-webkit-scrollbar {
+    height: 5px;
+}
+
+.table>:not(caption)>*>* {
+    padding: 2rem 0.5rem;
+}
+
+::placeholder {
+    color: black;
+    font-weight: 600;
+}
+
+.table tbody td input[type="checkbox"]:checked::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table tbody td input[type="checkbox"]:hover {
+    background-color: #ddd;
+}
+
+.table tbody td {
+    padding: 30px;
+    margin: 0;
+    font-size: 14.5px;
+    font-weight: 600;
+}
+
+.text-muted {
+    font-size: 12.5px;
+}
+
+.table tbody tr td:nth-of-type(3) {
+    min-width: 320px;
+}
+
+@media(min-width: 992px) {
+    .container .table-wrap {
+        overflow: hidden;
+    }
+}
