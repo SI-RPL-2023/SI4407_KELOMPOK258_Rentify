@@ -43,6 +43,10 @@ Route::get('/add_property', function () {
     return view('addProperty');
 });
 
+Route::get('/edit_property', function () {
+    return view('editProperty');
+});
+
 Route::get('/property', function () {
     $data = DB::table('properties')->get();
     return view('property', ['data' => $data]);
