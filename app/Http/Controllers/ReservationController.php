@@ -11,13 +11,13 @@ class ReservationController extends Controller
 {
     public function store(Request $request)
     {
-        $price = Property::select('value','price')->find($request->input('id_property'));
+        $price = Property::find($request->id_property);
         $request->validate([
             'id_property' => 'required',
-            'id_user' => 'required',
+            
             'tanggal_sewa' => 'required',
             'durasi' => 'required',
-            'total' => 'required',
+            
             
         ]);
 
@@ -26,12 +26,12 @@ class ReservationController extends Controller
             'id_user' => Auth::id(),
             'tanggal_sewa' => $request->tanggal_sewa,
             'durasi' => $request->durasi,
-            'total' => $request->durasi * $price->value,
+            'total' => $request->durasi * $price->price,
             
         ]);
 
-
-        return redirect('/payment/$request->id_property')->with('success', 'Reservasi berhasil');
+        $id = $request->id_property;
+        return redirect()->route('payment', ['id' => $id])->with('success', 'Reservasi berhasil');
     }
 
     public function update(Request $request, $id)

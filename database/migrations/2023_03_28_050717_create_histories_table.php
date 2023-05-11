@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('id_user')->references('id')->on('users');
             $table->bigInteger('id_reservasi')->unsigned()->index()->nullable();
             $table->foreign('id_reservasi')->references('id')->on('reservations');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

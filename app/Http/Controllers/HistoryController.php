@@ -4,26 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\History;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        $request->validate([
-            'id_property' => 'required',
-            'id_user' => 'required',
-            
-        ]);
+        
 
         History::create([
-            'id_property' => $request->id_property,
-            'id_user' => $request->id_user,
+            'id_property' => $id,
+            'id_user' => Auth::id(),
+            'id_reservasi' => $request->id_reservasi,
         ]);
 
 
 
 
-        return redirect('/product');
+        return redirect('/after_payment');
     }
 
     public function update(Request $request, $id)

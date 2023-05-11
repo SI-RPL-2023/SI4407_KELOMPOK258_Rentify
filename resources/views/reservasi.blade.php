@@ -47,6 +47,11 @@
             </div>
 
             <div class="mb-3">
+              
+              <input type="hidden" class="form-control"  name="id_property" value="{{$data->id}}">
+            </div>
+
+            <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label"> <b>Tanggal Sewa</b></label>
               <input type="date" class="form-control"  name="tanggal_sewa">
             </div>
