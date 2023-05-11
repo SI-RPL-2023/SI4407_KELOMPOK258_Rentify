@@ -8,12 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        
+        $request->validate([
+            'id_property' => 'required',
+            
+            'id_reservasi' => 'required',
+            
+        ]);
 
         History::create([
-            'id_property' => $id,
+            'id_property' => $request->id_property,
             'id_user' => Auth::id(),
             'id_reservasi' => $request->id_reservasi,
         ]);
