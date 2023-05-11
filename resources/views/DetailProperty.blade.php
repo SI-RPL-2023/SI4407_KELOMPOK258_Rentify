@@ -43,7 +43,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h1 class="h2">{{$data->property_name}}</h1>
-                            <p class="h3 py-2">Rp {{$data->price}}/jam</p>
+                            <p class="h3 py-2">{{$price}} /jam</p>
                             <p class="py-2">
                                 <i class="fa fa-star text-warning"></i>
                                 <i class="fa fa-star text-warning"></i>
@@ -81,7 +81,7 @@
                                 
                                 <div class="row pb-3">
                                     <div class="col d-grid">
-                                        <input type="submit" class="btn btn-success btn-lg" value="Sewa">
+                                        <button type="submit" class="btn btn-success btn-lg" >Sewa</button>
                                     </div>
                                     
                                 </div>

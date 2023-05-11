@@ -51,7 +51,7 @@
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
                                 
-                                <li class="text-warning text-right">{{ $tampil->price}}/jam</li>
+                                <li class="text-warning text-right">{{'Rp ' .number_format($tampil->price / 1, 2)}} /jam</li>
                             </ul>
                             <a href="/detail/{{ $tampil->id}}" class="h2 text-decoration-none text-dark">{{ $tampil->property_name}}</a>
                             <p>{{ $tampil->lokasi}}</p>
