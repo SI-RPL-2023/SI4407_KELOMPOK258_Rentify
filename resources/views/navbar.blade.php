@@ -2,6 +2,7 @@
 
 
     <!-- Header -->
+    
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -86,7 +87,7 @@
                     @if(Auth::user())
                     <a class="nav-icon position-relative text-decoration-none" href="/favorite/{{Auth::user()->id}}">
                         <i class="fa fa-fw fa-heart text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">{{$count}}
                             </span>
                     </a>
                     @else

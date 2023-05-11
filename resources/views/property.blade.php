@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Properties</title>
     @include('header')
     
 
@@ -31,38 +32,37 @@
             </div>
                 
             @if (is_countable($data) && count($data) > 0)
-            <div class="container py-5">
             
-            <div class="row row-cols-1 row-cols-md-2">
-                @foreach ($data as $tampil)
-                <div class="row col-12 col-md-4 mb-4">
                 
-                <div class="card h-100">
+    <section >
+        <div class="container py-5">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">List of Properties</h1>
+                </div>
+            </div>
+            <div class="row">
+            @foreach ($data as $tampil)
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
                         <a href="/detail/{{ $tampil->id}}">
-                            <img class="card-img-top" src='{{ asset('storage/'.$tampil->image) }}' alt='No Image'/>
+                            <img src="{{ asset('storage/'.$tampil->image) }}" class="card-img-top" alt="...">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                </li>
-                                <li class="text-warning text-right">RP {{ $tampil->price}}/jam</li>
+                                
+                                <li class="text-warning text-right">{{ $tampil->price}}/jam</li>
                             </ul>
                             <a href="/detail/{{ $tampil->id}}" class="h2 text-decoration-none text-dark">{{ $tampil->property_name}}</a>
                             <p>{{ $tampil->lokasi}}</p>
+                            
                         </div>
                     </div>
-                    
-                
                 </div>
                 @endforeach
-                </div>
-                
-                </div>
+            </div>
+        </div>
+    </section>
                 
                 @else
                    <center><p>No data found.</p></center> 

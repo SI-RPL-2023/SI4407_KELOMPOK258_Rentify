@@ -32,8 +32,8 @@
             @method('post')
 
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"> <b>ID Akun (otomatis)</b></label>
-              <input type="text" class="form-control" placeholder="..." name="id_pemilik" value="{{Auth::user()->id}}" readonly>
+              
+              <input type="hidden" class="form-control" placeholder="..." name="id_pemilik" value="{{Auth::user()->id}}" readonly>
             </div>
 
             <div class="mb-3">

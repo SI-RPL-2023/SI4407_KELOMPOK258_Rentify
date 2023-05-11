@@ -7,7 +7,30 @@
     
 
 </head>
+<style>
+    .btn-group button {
+    
+        padding: 10px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        float: left; /* Float the buttons side by side */
+    }
 
+    /* Clear floats (clearfix hack) */
+    .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .btn-group button:not(:last-child) {
+        border-right: none; /* Prevent double borders */
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        background-color: #3e8e41;
+    }
+</style>
 
 
 <body>
@@ -46,17 +69,20 @@
                             <a href="/detail/{{ $tampil->id}}" class="h2 text-decoration-none text-dark">{{ $tampil->property_name}}</a>
                             <p>{{ $tampil->alamat}}</p>
                             </div>
-                            <form action="/delete_property" method="get">
-                                @csrf
-                                @method('GET')
-                            <center><button id="hapus" class="btn btn-primary"  style="background-color: #df6f6f; width:100%;">Hapus</button></center>
-                            </form>
+                            <div class="btn-group">
+                                <form action="/delete_property" method="get">
+                                    @csrf
+                                    @method('GET')
+                                <button id="hapus" class="btn btn-primary"  style="background-color: #df6f6f; width:100%;">Hapus</button></center>
+                                </form>
+                                
+                                <form action="/edit_property" method="get">
+                                    @csrf
+                                    @method('GET')
+                                <button id="edit" class="btn btn-primary" style="background-color: #70bee5; width:100%;">Edit</button></center>
+                                </form>
+                            </div>
                             
-                            <form action="/edit_property" method="get">
-                                @csrf
-                                @method('GET')
-                            <center><button id="edit" class="btn btn-primary" style="background-color: #70bee5; width:100%;">Edit</button></center>
-                            </form>
                     </div>
                     
                 
