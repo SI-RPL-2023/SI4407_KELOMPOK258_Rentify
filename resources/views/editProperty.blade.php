@@ -32,7 +32,7 @@
                 <div class="col-lg-5 mt-5">
                 
                     <div class="card mb-3 justify-content-center align-items-center">
-                        {{-- <img id="product-detail" class="card-img img-fluid" src='{{ asset('storage/'.$data->image) }}' alt='No Image' > -> belum buat rute  --}}
+                         <img id="product-detail" class="card-img img-fluid" src='{{ asset('storage/'.$data->image) }}' alt='No Image' > 
                     </div>
                     </div>
                     
@@ -43,7 +43,7 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/add_property" method="post" enctype="multipart/form-data" >
+                            <form action="/edit_property/{{$data->id}}" method="post" enctype="multipart/form-data" >
                                 @csrf
                                 @method('post')
                     
@@ -54,7 +54,7 @@
                     
                                 <div class="mb-3">
                                   <label for="exampleFormControlInput1" class="form-label"> <b>Property Name</b></label>
-                                  <input type="text" class="form-control" placeholder="Nama gedung" name="property_name">
+                                  <input type="text" class="form-control" placeholder="{{$data->property_name}}" name="property_name">
                                 </div>
                     
                                 <div class="mb-3">
@@ -67,7 +67,7 @@
                     
                                 <div class="mb-3">
                                   <label for="exampleFormControlInput1" class="form-label"><b>Price</b></label>
-                                  <input type="number" class="form-control" placeholder="1000000" name="price">
+                                  <input type="number" class="form-control" placeholder="{{$data->price}}" name="price">
                                 </div>
                     
                                 <div class="mb-3">
@@ -80,31 +80,33 @@
                     
                                 <div class="mb-3">
                                   <label for="exampleFormControlInput1" class="form-label"><b>Kapasitas</b></label>
-                                  <input type="text" class="form-control" placeholder="..." name="kapasitas" id="kapasitas">
+                                  <input type="text" class="form-control" placeholder="{{$data->kapasitas}}" name="kapasitas" id="kapasitas">
                                 </div>
                                 
                                 <div class="col-12">
                                   <label for="inputAddress" class="form-label"><b>Lokasi</b></label>
-                                  <input type="text" class="form-control" id="lokasi" placeholder="Jl.xxx no.x Bandung" name="lokasi">
+                                  <input type="text" class="form-control" id="lokasi" placeholder="{{$data->lokasi}}" name="lokasi">
                                 </div>
                     
                                 <div class="mb-3">
                                   <label for="exampleFormControlTextarea1" class="form-label"><b>Fasilitas</b></label>
-                                  <textarea class="form-control" rows="3" name="fasilitas" id="fasilitas"></textarea>
+                                  <textarea class="form-control" rows="3" name="fasilitas" id="fasilitas" placeholder="{{$data->fasilitas}}"></textarea>
                                 </div>
                                 
                                 <div class="mb-3">
                                   <label for="exampleFormControlTextarea1" class="form-label"><b>Deskripsi</b></label>
-                                  <textarea class="form-control" rows="3" name="description" id="description"></textarea>
+                                  <textarea class="form-control" rows="3" name="description" id="description" placeholder="{{$data->description}}"></textarea>
                                 </div>
                                 
                                 <div><label for="foto" class="form-label"><b>Image</b></label>
                                   <input class="form-control" type="file" id="image" name="image"><br></div>
                     
                               <button type="submit" name="Selesai" class="btn btn-primary">Selesai</button>
-                              <button type="button" name="Cancel"class="btn btn-secondary">Cancel</button>
+                              
                               </form>
-
+                              <form action="/my_property{{Auth::id()}}" method="get">
+                                <button type="button" name="Cancel"class="btn btn-secondary">Cancel</button>
+                              </form>
                         </div>
                     </div>
                 </div>

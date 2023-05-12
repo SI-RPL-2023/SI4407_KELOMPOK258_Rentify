@@ -14,7 +14,7 @@
 		<div class="section-title text-center">
             <br>
             <br>
-			<center><h2>Riwayat order {{Auth::user()->nama}}</h2></center>
+			<center><h2>Riwayat Penyewaan Gedung {{$property->property_name}}</h2></center>
             <br>
 		</div>				
         @if (is_countable($data) && count($data) > 0)
@@ -22,14 +22,11 @@
             <center><table class="table table-responsive table-borderless"></center>
                 <thead>
                     
+                    <th>Nama Penyewa</th>
                     <th>Nama Gedung</th>
-                    <th>Harga</th>
-                    <th>Durasi</th>
-                    
                     <th>Tanggal Reservasi</th>
                     <th>Tanggal Check In</th>
-                    <th>Total</th>
-                    <th>Review</th>
+                    <th>Durasi</th>
 
                 </thead>
                 
@@ -38,16 +35,14 @@
                     @foreach ($reservasi as $tampil)
                     <tr class="align-middle alert border-bottom" role="alert">
                         
+                    <td class="text-center">
+                            
+                                <div class="col-md-8"><p class="m-0 fw-bold">{{$user->nama}}</p></div>
+                        </td>
                         <td>
                             <div>
-                                <center><p class="m-0 fw-bold">{{$property->property_name}}</p></center>
+                                <center><p >{{$property->property_name}}</p></center>
                             </div>
-                        </td>
-                        <td>
-                            <center><div class="">{{$formattedPrice}} /jam</div></center>
-                        </td>
-                        <td>
-                            <center><div class="">{{$tampil->durasi}} jam</div></center>
                         </td>
                         <td class="d-">
                             <center><p>{{$tampil->created_at}}</p></center>
@@ -56,14 +51,7 @@
                             <center><p>{{$tampil->tanggal_sewa}}</p></center>
                         </td>
                         <td>
-                            <center><div class="fw-600">{{'Rp ' .number_format($tampil->total / 1, 2)}}</div></center>
-                        </td>
-                        <td>
-                            <form action="/review_add/{{$property->id}}" method="get">
-                            <center><div class="graph-star-rating-footer text-center mt-3 mb-3">
-                                        <button type="submit" class="btn btn-outline-success btn-lg" name="submit">Review</button>
-                                    </div></center>
-                            </form>
+                            <center><div class="fw-600">{{$tampil->durasi}} Jam</div></center>
                         </td>
                     </tr>
                     @endforeach
@@ -73,6 +61,7 @@
             </table>
         </div>
     </div>
+    
     @include('footer')
     @else
     <center><p>No results found.</p></center>

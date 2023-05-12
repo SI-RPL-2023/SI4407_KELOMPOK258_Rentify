@@ -8,11 +8,13 @@
 
 </head>
 <style>
+    
     .btn-group button {
     
-        padding: 10px 24px; /* Some padding */
+        padding: 10px 66px; /* Some padding */
         cursor: pointer; /* Pointer/hand icon */
         float: left; /* Float the buttons side by side */
+        
     }
 
     /* Clear floats (clearfix hack) */
@@ -42,6 +44,9 @@
 
     
     <div class="container py-5">
+        <br><br>
+        <center><h2>Menampilkan Property {{Auth::user()->nama}}</h2></center>
+        <br><br>
         <div class="row">
 
             
@@ -64,24 +69,29 @@
                                     <i class="text-warning fa fa-star"></i>
                                     <i class="text-warning fa fa-star"></i>
                                 </li>
-                                <li class="text-warning text-right">RP {{ $tampil->price}}/jam</li>
+                                <li class="text-warning text-right">{{'Rp ' .number_format($tampil->price / 1, 2)}} /jam</li>
                             </ul>
                             <a href="/detail/{{ $tampil->id}}" class="h2 text-decoration-none text-dark">{{ $tampil->property_name}}</a>
                             <p>{{ $tampil->alamat}}</p>
                             </div>
                             <div class="btn-group">
-                                <form action="/delete_property" method="get">
+                                <form action="/delete_property/{{ $tampil->id}}" method="get">
                                     @csrf
                                     @method('GET')
                                 <button id="hapus" class="btn btn-primary"  style="background-color: #df6f6f; width:100%;">Hapus</button></center>
                                 </form>
                                 
-                                <form action="/edit_property" method="get">
+                                <form action="/edit_property/{{ $tampil->id}}" method="get">
                                     @csrf
                                     @method('GET')
                                 <button id="edit" class="btn btn-primary" style="background-color: #70bee5; width:100%;">Edit</button></center>
                                 </form>
                             </div>
+                            <form action="/history_gedung/{{ $tampil->id}}" method="get">
+                                    @csrf
+                                    @method('GET')
+                                <button id="hapus" class="btn btn-success btn-lg"  style="width:100%;">Riwayat Penyewaan</button></center>
+                            </form>
                             
                     </div>
                     
@@ -110,7 +120,7 @@
 
             @if (is_countable($data) && count($data) > 0)
             <br>
-            <p>Menampilkan {{is_countable($data) && count($data)}} Property</p>
+            <p>Menampilkan {{count($data)}} Property</p>
             @endif
             </div>
             </div>
