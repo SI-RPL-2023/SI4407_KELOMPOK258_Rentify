@@ -17,7 +17,7 @@
 			<center><h2>Riwayat order {{Auth::user()->nama}}</h2></center>
             <br>
 		</div>				
-        @if (is_countable($data) && count($data) > 0)
+        @if (is_countable($reservasi) && count($reservasi) > 0)
         <div class="table-wrap">
             <center><table class="table table-responsive table-borderless"></center>
                 <thead>
@@ -40,7 +40,7 @@
                         
                         <td>
                             <div>
-                                <center><p class="m-0 fw-bold">{{$property->property_name}}</p></center>
+                                <center><a class="m-0 fw-bold" href="/detail/{{$property->id}}">{{$property->property_name}}</a></center>
                             </div>
                         </td>
                         <td>

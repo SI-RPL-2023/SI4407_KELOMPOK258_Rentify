@@ -17,7 +17,7 @@
 			<center><h2>Riwayat Penyewaan Gedung {{$property->property_name}}</h2></center>
             <br>
 		</div>				
-        @if (is_countable($data) && count($data) > 0)
+        @if ($property != null)
         <div class="table-wrap">
             <center><table class="table table-responsive table-borderless"></center>
                 <thead>
@@ -41,7 +41,7 @@
                         </td>
                         <td>
                             <div>
-                                <center><p >{{$property->property_name}}</p></center>
+                                <center><a href="/detail/{{$property->id}}">{{$property->property_name}}</a></center>
                             </div>
                         </td>
                         <td class="d-">
