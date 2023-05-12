@@ -43,8 +43,13 @@ Route::get('/add_property', function () {
     return view('addProperty');
 });
 
-Route::get('/edit_property', function () {
-    return view('editProperty');
+Route::get('/review', function () {
+    return view('review');
+});
+
+Route::get('/edit_property/{id}', function ($id) {
+    $data = DB::table('properties')->where('id', $id)->first();
+    return view('editProperty', ['data' => $data]);
 });
 
 Route::get('/property', function () {
@@ -89,11 +94,30 @@ Route::get('/after_payment', function () {
 
 Route::get('/history', function () {
     $data = DB::table('histories')->where('id_user', Auth::id())->first();
+    $user = Auth::user()->nama;
+    if (is_countable($data) && count($data) > 0){
     $reservasi = DB::table('reservations')->where('id', $data->id_reservasi)->get();
     $property = DB::table('properties')->where('id', $data->id_property)->first();
     $formattedPrice = 'Rp ' . number_format($property->price / 1, 2);
     
     return view('history_penyewa', compact('property', 'reservasi', 'formattedPrice'));
+    }else {
+        return view('history_penyewa', ['data' => $data]);
+    }
+});
+
+Route::get('/history_gedung/{id}', function ($id) {
+    $data = DB::table('histories')->where('id_property', $id)->first();
+    $property = DB::table('properties')->where('id', $id)->first();
+    if (is_countable($data) && count($data) > 0){
+        $reservasi = DB::table('reservations')->where('id', $data->id_reservasi)->get();
+        $property = DB::table('properties')->where('id', $data->id_property)->first();
+        $user = DB::table('users')->where('id', $data->id_user)->first();
+        return view('history_pemilik', compact('property', 'reservasi', 'user'));
+    }else {
+        return view('history_pemilik', compact('data', 'property'));
+    }
+    
 });
 
 Route::get('/review/{id}', function ($id) {
@@ -123,3 +147,4 @@ Route::get('/favorite_delete/{id}', [FavoriteController::class, 'destroy']);
 Route::post('/reservasi', [ReservationController::class, 'store']);
 Route::post('/after_payment/{id}', [HistoryController::class, 'store']);
 Route::post('/review_add/{id}', [ReviewController::class, 'store']);
+Route::post('/edit_property/{id}', [PropertyController::class, 'update']);

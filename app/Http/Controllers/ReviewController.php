@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -11,7 +12,7 @@ class ReviewController extends Controller
     {
         $request->validate([
             'id_property' => 'required',
-            'id_user' => 'required',
+            
             'rating' => 'required',
             'review' => 'required'
             
@@ -19,7 +20,7 @@ class ReviewController extends Controller
 
         Review::create([
             'id_property' => $request->id_property,
-            'id_user' => $request->id_user,
+            'id_user' => Auth::id(),
             'rating' => $request->rating,
             'review' => $request->review,
         ]);
