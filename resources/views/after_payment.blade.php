@@ -54,13 +54,13 @@
                 <form action="/" method="get">
                     @csrf
                     @method('GET')
-                    <button id="hapus" class="btn btn-success btn-lg" >Kembali ke beranda</button>
+                    <button id="hapus" class="btn btn-success-outline btn-lg" style="border-right=none;">Kembali ke beranda</button>
                 </form>
                                 
                 <form action="/history" method="get">
                     @csrf
                     @method('GET')
-                    <button id="edit" class="btn btn-success btn-lg" >Riwayat</button>
+                    <button id="edit" class="btn btn-success-outline btn-lg" style="border-left:none;">Riwayat</button>
                 </form>
             </div>
           

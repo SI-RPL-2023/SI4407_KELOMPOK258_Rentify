@@ -20,15 +20,22 @@
     @include('alert')
 
     <!-- Form Start-->
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </div>
+    @endif
     <div class="container">
         <div class="row">
           <div class="col-8">
 <br><br>
             <h3>Pembayaran</h3><p>Pilih metode pembayaran</p><br><br>
             
-            <form action="/after_payment/{{$data->id}}" method="get" enctype="multipart/form-data" >
+            <form action="/after_payment/{{$data->id}}" method="post" enctype="multipart/form-data" >
             @csrf
-            @method('get')
+            @method('post')
 
             <div class="mb-3">
                 <div class="radio-img">
@@ -75,13 +82,15 @@
               <label for="exampleFormControlInput1" class="form-label"> <b>Detail reservasi</b></label>
               <p>Nama Gedung                    : {{$data->property_name}}</p>
               <p>alamat                         : {{$data->lokasi}}</p>
-              <b><h4>Total yang harus dibayar    : {{$total->total}}</h4></b>
+              <b><h4>Total yang harus dibayar    : {{$harga}}</h4></b>
             </div>
 
             <div class="mb-3">
               <input type="hidden" name="id_reservasi" value="{{$total->id}}">
             </div>
-
+            <div class="mb-3">
+              <input type="hidden" name="id_property" value="{{$data->id}}">
+            </div>
             
 
           <button type="submit" name="Selesai" class="btn btn-primary">Selesai</button>

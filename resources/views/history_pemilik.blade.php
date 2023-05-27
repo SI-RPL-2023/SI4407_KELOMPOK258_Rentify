@@ -17,7 +17,7 @@
 			<center><h2>Riwayat Penyewaan Gedung {{$property->property_name}}</h2></center>
             <br>
 		</div>				
-        @if ($property != null)
+        @if ($reservasi != null)
         <div class="table-wrap">
             <center><table class="table table-responsive table-borderless"></center>
                 <thead>

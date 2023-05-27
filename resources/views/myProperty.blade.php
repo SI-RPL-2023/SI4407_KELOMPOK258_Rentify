@@ -78,13 +78,13 @@
                                 <form action="/delete_property/{{ $tampil->id}}" method="get">
                                     @csrf
                                     @method('GET')
-                                <button id="hapus" class="btn btn-primary"  style="background-color: #df6f6f; width:100%;">Hapus</button></center>
+                                <button id="hapus" class="btn btn-outline-danger"  >Hapus</button></center>
                                 </form>
                                 
                                 <form action="/edit_property/{{ $tampil->id}}" method="get">
                                     @csrf
                                     @method('GET')
-                                <button id="edit" class="btn btn-primary" style="background-color: #70bee5; width:100%;">Edit</button></center>
+                                <button id="edit" class="btn btn-outline-success" >Edit</button></center>
                                 </form>
                             </div>
                             <form action="/history_gedung/{{ $tampil->id}}" method="get">
@@ -111,7 +111,9 @@
                     <form action="/add_property" method="get">
                         @csrf
                         @method('GET')
-                    <center><input type="submit" class="btn btn-primary" value="Tambahkan Property"></input></center>
+                        <div class="col d-grid">
+                            <center><button type="submit" style="width:100%;" class="btn btn-outline-success btn-lg" name="submit">Tambahkan Property</button></center>
+                        </div>
                     </form>
                     <br>
                     <br>

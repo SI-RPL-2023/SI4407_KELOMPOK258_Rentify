@@ -17,7 +17,7 @@
 			<center><h2>Riwayat order {{Auth::user()->nama}}</h2></center>
             <br>
 		</div>				
-        @if (is_countable($reservasi) && count($reservasi) > 0)
+        @if ($data != null)
         <div class="table-wrap">
             <center><table class="table table-responsive table-borderless"></center>
                 <thead>

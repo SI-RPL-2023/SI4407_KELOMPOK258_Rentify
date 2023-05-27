@@ -45,7 +45,7 @@
                                 
                             <div class="col d-grid">
                             
-                                        <button class="btn btn-success btn-lg" name="submit">Hapus</button>
+                                        <button class="btn btn-danger btn-lg" name="submit">Hapus</button>
                                     </div>
                             </form>
                         </div>

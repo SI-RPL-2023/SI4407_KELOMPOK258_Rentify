@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_property')->unsigned()->index()->nullable();
-            $table->foreign('id_property')->references('id')->on('properties');
+            $table->foreign('id_property')->references('id')->on('properties')->onDelete('cascade');
             $table->bigInteger('id_user')->unsigned()->index()->nullable();
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

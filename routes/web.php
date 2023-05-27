@@ -59,8 +59,21 @@ Route::get('/property', function () {
 
 Route::get('/detail/{id}', function ($id) {
     $data = DB::table('properties')->where('id', $id)->first();
+    $review = DB::table('reviews')->where('id_property', $id)->get();
+    $review2 = DB::table('reviews')->where('id_property', $id)->get();
+    $rating = 0;
+    $user = null;
+
+    if ($review != null) {
+        foreach ($review2 as $review2) {
+            $user = User::where('id', $review2->id_user)->first();
+            $rating += $review2->rating;
+        }
+        
+    }
+
     $price = 'Rp ' . number_format($data->price / 1, 2);
-    return view('DetailProperty', compact('data', 'price'));
+    return view('DetailProperty', compact('data', 'price', 'review', 'rating', 'user'));
 });
 
 Route::get('/my_property/{id}', function ($id) {
@@ -84,7 +97,8 @@ Route::get('/reservasi/{id}', function ($id) {
 Route::get('/payment/{id}', function ($id) {
     $data = DB::table('properties')->where('id', $id)->first();
     $total = DB::table('reservations')->where('id_user', Auth::id())->first();
-    return view('payment', compact('data', 'total'));
+    $harga = 'Rp ' . number_format($total->total / 1, 2);
+    return view('payment', compact('data', 'total', 'harga'));
 })->name('payment');
 
 Route::get('/after_payment', function () {
@@ -94,18 +108,22 @@ Route::get('/after_payment', function () {
 
 Route::get('/history', function () {
     $data = DB::table('histories')->where('id_user', Auth::id())->first();
-    
-    $reservasi = DB::table('reservations')->where('id', $data->id_reservasi)->get();
-    $property = DB::table('properties')->where('id', $data->id_property)->first();
-    $formattedPrice = 'Rp ' . number_format($property->price / 1, 2);
-    
-    return view('history_penyewa', compact('property', 'reservasi', 'formattedPrice'));
-    
+
+    if ($data != null) { 
+        $property = DB::table('properties')->where('id', $data->id)->first();
+        $reservasi = DB::table('reservations')->where('id', $data->id_reservasi)->get();
+        $formattedPrice = 'Rp ' . number_format($property->price / 1, 2);
+
+        return view('history_penyewa', compact('property', 'reservasi', 'formattedPrice', 'data'));
+    } else {
+        return view('history_penyewa', compact('data'));
+    }
 });
 
 Route::get('/history_gedung/{id}', function ($id) {
     $data = DB::table('histories')->where('id_property', $id)->first();
     $property = DB::table('properties')->where('id', $id)->first();
+
     
     if ($data != null) {    
         $reservasi = DB::table('reservations')->where('id', $data->id_reservasi)->get();
@@ -113,7 +131,8 @@ Route::get('/history_gedung/{id}', function ($id) {
         $user = DB::table('users')->where('id', $data->id_user)->first();
         return view('history_pemilik', compact('property', 'reservasi', 'user'));
     }else {
-        return view('history_pemilik', compact('data', 'property'));
+        $reservasi = null;
+        return view('history_pemilik', compact('data', 'property', 'reservasi'));
     }
     
 });
@@ -121,6 +140,10 @@ Route::get('/history_gedung/{id}', function ($id) {
 Route::get('/review/{id}', function ($id) {
     $data = DB::table('reviews')->where('id_property', $id)->first();
     return view('review_add', ['data' => $data]);
+});
+
+Route::get('/review', function () {
+    return view('review');
 });
 
 Route::get('/review_add/{add}', function ($id) {
