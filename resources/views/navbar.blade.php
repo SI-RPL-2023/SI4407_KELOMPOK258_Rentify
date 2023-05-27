@@ -53,7 +53,7 @@
                         @if (Auth::user())
                         @if (Auth::check() && Auth::user()->access_type == 'Admin')
                         <li class="nav-item">
-                            <a class="nav-link" href="">List Gedung</a>
+                            <a class="nav-link" href="/list_gedung">List Gedung</a>
                         </li>
                         @endif
                         @endif
@@ -61,7 +61,15 @@
                         @if (Auth::user())
                         @if (Auth::check() && Auth::user()->access_type == 'Admin')
                         <li class="nav-item">
-                            <a class="nav-link" href="">Users</a>
+                            <a class="nav-link" href="/list_user">Users</a>
+                        </li>
+                        @endif
+                        @endif
+
+                        @if (Auth::user())
+                        @if (Auth::check() && Auth::user()->access_type == 'Admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="/list_reservasi">Reservations</a>
                         </li>
                         @endif
                         @endif

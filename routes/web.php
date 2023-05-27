@@ -156,7 +156,10 @@ Route::get('/profile', function () {
     return view('profile', ['data' => $data]);
 });
 
-
+Route::get('/list_user', function () {
+    $data = DB::table('users')->get();
+    return view('user_list', ['data' => $data]);
+});
 
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);

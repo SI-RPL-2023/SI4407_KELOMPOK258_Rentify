@@ -82,4 +82,19 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/')->with('success', 'Berhasil Logout');
     }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            // User not found
+            return redirect()->back()->with('error', 'User not found.');
+        }
+
+        // Delete the user
+        $user->delete();
+
+        return back()->withInput()->with('success', 'User deleted successfully.');
+    }
 }
