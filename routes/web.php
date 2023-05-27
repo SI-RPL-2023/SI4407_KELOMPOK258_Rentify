@@ -161,6 +161,11 @@ Route::get('/list_user', function () {
     return view('user_list', ['data' => $data]);
 });
 
+Route::get('/list_gedung', function () {
+    $data = DB::table('properties')->get();
+    return view('list_property', ['data' => $data]);
+});
+
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
@@ -172,3 +177,5 @@ Route::post('/reservasi', [ReservationController::class, 'store']);
 Route::post('/after_payment/{id}', [HistoryController::class, 'store']);
 Route::post('/review_add/{id}', [ReviewController::class, 'store']);
 Route::post('/edit_property/{id}', [PropertyController::class, 'update']);
+Route::post('/hapus_akun/{id}', [UserController::class, 'destroy']);
+Route::post('/add_property/{id}', [PropertyController::class, 'destroy']);
