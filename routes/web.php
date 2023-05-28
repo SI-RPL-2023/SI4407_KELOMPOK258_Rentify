@@ -62,18 +62,22 @@ Route::get('/detail/{id}', function ($id) {
     $review = DB::table('reviews')->where('id_property', $id)->get();
     $review2 = DB::table('reviews')->where('id_property', $id)->get();
     $rating = 0;
+    $jumlah = 0;
+
     $user = null;
 
     if ($review != null) {
         foreach ($review2 as $review2) {
             $user = User::where('id', $review2->id_user)->first();
             $rating += $review2->rating;
+            $jumlah += 1;
         }
         
     }
+    $rating = $rating/$jumlah;
 
     $price = 'Rp ' . number_format($data->price / 1, 2);
-    return view('DetailProperty', compact('data', 'price', 'review', 'rating', 'user'));
+    return view('DetailProperty', compact('data', 'price', 'review', 'rating', 'user', 'jumlah'));
 });
 
 Route::get('/my_property/{id}', function ($id) {

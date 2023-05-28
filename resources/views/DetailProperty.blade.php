@@ -45,12 +45,55 @@
                             <h1 class="h2">{{$data->property_name}}</h1>
                             <p class="h3 py-2">{{$price}} /jam</p>
                             <p class="py-2">
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
+                            @if ($rating == 5)
+                                
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                            @elseif ($rating > 4)
+                                
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @elseif ($rating > 3)
+                            
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @elseif ($rating > 2)
+                                
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @elseif ($rating > 1)
+                                
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @else
+                                
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @endif
+                            <span class="list-inline-item text-warning">Rated {{$rating}} out of 5 |</span><span class="list-inline-item text-dark">| {{$jumlah}} reviews</span>
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
@@ -156,61 +199,61 @@
                     
                         @if ($review->isEmpty())
                             <span class="star-rating float-right">
-                            <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                            <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                            <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                            <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                            <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                            <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                            <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                            <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                            <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                            <a href="#"><i class="fa fa-star text-secondary"></i></a>
                             </span>
                         @else 
 
                             @if ($rating > 4)
                                 <span class="star-rating float-right">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
                             @elseif ($rating > 4)
                                 <span class="star-rating float-right">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
                             @elseif ($rating > 3)
                             <span class="star-rating float-right">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
                             @elseif ($rating > 2)
                                 <span class="star-rating float-right">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
                             @elseif ($rating > 1)
                                 <span class="star-rating float-right">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
                             @else
                                 <span class="star-rating float-right">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
                             @endif
                         @endif
@@ -223,50 +266,50 @@
                         <div class="star-rating">
                         @if ($rating == 5)
                                 <div class="star-rating">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
                         @elseif ($rating > 4)
                                 <div class="star-rating">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
                             @elseif ($rating > 3)
                             <div class="star-rating">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
                             @elseif ($rating > 2)
                                 <div class="star-rating">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
                             @elseif ($rating > 1)
                                 <div class="star-rating">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
                             @else
                                 <div class="star-rating">
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
                             @endif
                             @if (is_countable($review) && count($review) > 0)
@@ -343,53 +386,53 @@
                             </div>
                             <div class="col">
                                 <div class="reviews-members-header">
-                                    @if ($rating > 5)
+                                    @if ($review->rating == 5)
                                         <span class="star-rating float-right">
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
                                         </span>
-                                    @elseif ($rating > 4)
+                                    @elseif ($review->rating >= 4)
                                         <span class="star-rating float-right">
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                         </span>
-                                    @elseif ($rating > 3)
+                                    @elseif ($review->rating >= 3)
                                     <span class="star-rating float-right">
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                         </span>
-                                    @elseif ($rating > 2)
+                                    @elseif ($review->rating >= 2)
                                         <span class="star-rating float-right">
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                         </span>
-                                    @elseif ($rating > 1)
+                                    @elseif ($review->rating >= 1)
                                         <span class="star-rating float-right">
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x active"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                         </span>
                                     @else
                                         <span class="star-rating float-right">
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                        <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                        <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                         </span>
                                     @endif
                                     <h6>{{$user->nama}}</h6>
