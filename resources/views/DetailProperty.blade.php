@@ -52,7 +52,7 @@
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
-                            @elseif ($rating > 4)
+                            @elseif ($rating >= 4)
                                 
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -60,7 +60,7 @@
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
-                            @elseif ($rating > 3)
+                            @elseif ($rating >= 3)
                             
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -68,7 +68,7 @@
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
-                            @elseif ($rating > 2)
+                            @elseif ($rating >= 2)
                                 
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -76,7 +76,7 @@
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
-                            @elseif ($rating > 1)
+                            @elseif ($rating >= 1)
                                 
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
@@ -207,7 +207,7 @@
                             </span>
                         @else 
 
-                            @if ($rating > 4)
+                            @if ($rating == 5)
                                 <span class="star-rating float-right">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -215,7 +215,7 @@
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
-                            @elseif ($rating > 4)
+                            @elseif ($rating >= 4)
                                 <span class="star-rating float-right">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -223,7 +223,7 @@
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
-                            @elseif ($rating > 3)
+                            @elseif ($rating >= 3)
                             <span class="star-rating float-right">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -231,7 +231,7 @@
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
-                            @elseif ($rating > 2)
+                            @elseif ($rating >= 2)
                                 <span class="star-rating float-right">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -239,7 +239,7 @@
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 </span>
-                            @elseif ($rating > 1)
+                            @elseif ($rating >= 1)
                                 <span class="star-rating float-right">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
@@ -271,7 +271,7 @@
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
-                        @elseif ($rating > 4)
+                        @elseif ($rating >= 4)
                                 <div class="star-rating">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -279,7 +279,7 @@
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
-                            @elseif ($rating > 3)
+                            @elseif ($rating >= 3)
                             <div class="star-rating">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -287,7 +287,7 @@
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
-                            @elseif ($rating > 2)
+                            @elseif ($rating >= 2)
                                 <div class="star-rating">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
@@ -295,7 +295,7 @@
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
                                 
-                            @elseif ($rating > 1)
+                            @elseif ($rating >= 1)
                                 <div class="star-rating">
                                 <a href="#"><i class="fa fa-star text-warning"></i></a>
                                 <a href="#"><i class="fa fa-star text-secondary"></i></a>
