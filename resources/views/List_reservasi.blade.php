@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>{{Auth::user()->nama}}'s Property</title>
+    <title>Reservations List</title>
     @include('header')
     
 
@@ -143,19 +143,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $data)
+                                @foreach ($data as $data )
                                 <tr>
                                     <td>
                                         <ul class="action-list">
-                                            <li><a href="/hapus_akun/{{$data->id}}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
+                                            <li><a href="/hapus_reservasi/{{$data->id}}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a></li>
                                             <li><a href="#" class="btn btn-danger"><i class="fa fa-times"></i></a></li>
                                         </ul>
                                     </td>
-                                    <td>{{$data->nama_penyewa}}</td>
-                                    <td>{{$data->nama_gedung}}</td>
+                                    
+                                    <td>{{$data->user->nama}}</td>
+                                    <td>{{$data->property->property_name}}</td>
                                     <td>{{$data->tanggal_sewa}}</td>
-                                    <td>{{$data->durasi_sewa}}</td>
-                                    <td>{{$data->tanggal_reservasi}}</td>
+                                    <td>{{$data->durasi}}</td>
+                                    <td>{{$data->created_at}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

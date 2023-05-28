@@ -8,11 +8,19 @@
 
 </head>
 <style>
+    .body {
+        background-color: grey;
+    }
+    .container {
+        background-color:white;
+        width:40%;
+    }
     .btn-group button {
         
         padding: 10px 24px; /* Some padding */
         cursor: pointer; /* Pointer/hand icon */
         float: left; /* Float the buttons side by side */
+        border-color:grey;
     }
 
     /* Clear floats (clearfix hack) */
@@ -35,7 +43,7 @@
     }
 </style>
 <body>
-    @include('navbar')
+    
     
     @include('modal')
 
@@ -54,7 +62,7 @@
                 <form action="/" method="get">
                     @csrf
                     @method('GET')
-                    <button id="hapus" class="btn btn-success-outline btn-lg" style="border-right=none;">Kembali ke beranda</button>
+                    <button id="hapus" class="btn btn-success-outline btn-lg" style="border-right=none;">Beranda</button>
                 </form>
                                 
                 <form action="/history" method="get">
@@ -69,7 +77,7 @@
       </div></center>
       <!-- Form End-->
 <br>
-@include('footer')
+
 
   </body>
 </html>

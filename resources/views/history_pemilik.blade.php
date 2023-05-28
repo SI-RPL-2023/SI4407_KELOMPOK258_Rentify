@@ -14,14 +14,14 @@
 		<div class="section-title text-center">
             <br>
             <br>
-			<center><h2>Riwayat Penyewaan Gedung {{$property->property_name}}</h2></center>
+			<center><h2>Riwayat Penyewaan Gedung {{$property2->property_name}}</h2></center>
             <br>
 		</div>				
-        @if ($reservasi != null)
+        @if ($data != null)
         <div class="table-wrap">
             <center><table class="table table-responsive table-borderless"></center>
                 <thead>
-                    
+                    <th>Foto Gedung</th>
                     <th>Nama Penyewa</th>
                     <th>Nama Gedung</th>
                     <th>Tanggal Reservasi</th>
@@ -32,26 +32,30 @@
                 
                 <tbody>
                 
-                    @foreach ($reservasi as $tampil)
+                    @foreach ($data as $tampil)
                     <tr class="align-middle alert border-bottom" role="alert">
-                        
+                        <td class="text-center">
+                            <img class="pic"
+                                src="{{ asset('storage/'.$tampil->property->image) }}" class="img-fluid" alt="">
+                                
+                        </td>
                     <td class="text-center">
                             
-                                <div class="col-md-8"><p class="m-0 fw-bold">{{$user->nama}}</p></div>
+                                <div class="col-md-8"><p class="m-0 fw-bold">{{$tampil->user->nama}}</p></div>
                         </td>
                         <td>
                             <div>
-                                <center><a href="/detail/{{$property->id}}">{{$property->property_name}}</a></center>
+                                <a href="/detail/{{$tampil->property->id}}">{{$tampil->property->property_name}}</a>
                             </div>
                         </td>
                         <td class="d-">
-                            <center><p>{{$tampil->created_at}}</p></center>
+                            <p>{{$tampil->reservasi->created_at}}</p>
                         </td>
                         <td>
-                            <center><p>{{$tampil->tanggal_sewa}}</p></center>
+                            <p>{{$tampil->reservasi->tanggal_sewa}}</p>
                         </td>
                         <td>
-                            <center><div class="fw-600">{{$tampil->durasi}} Jam</div></center>
+                            <div class="fw-600">{{$tampil->reservasi->durasi}} Jam</div>
                         </td>
                     </tr>
                     @endforeach

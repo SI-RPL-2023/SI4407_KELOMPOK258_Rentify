@@ -97,8 +97,9 @@ Route::get('/reservasi/{id}', function ($id) {
 Route::get('/payment/{id}', function ($id) {
     $data = DB::table('properties')->where('id', $id)->first();
     $total = DB::table('reservations')->where('id_user', Auth::id())->first();
+    $price = 'Rp ' . number_format($data->price / 1, 2);
     $harga = 'Rp ' . number_format($total->total / 1, 2);
-    return view('payment', compact('data', 'total', 'harga'));
+    return view('payment', compact('data', 'total', 'harga', 'price'));
 })->name('payment');
 
 Route::get('/after_payment', function () {
@@ -107,33 +108,40 @@ Route::get('/after_payment', function () {
 
 
 Route::get('/history', function () {
-    $data = DB::table('histories')->where('id_user', Auth::id())->first();
+    $data = DB::table('histories')->where('id_user', Auth::id())->get();
 
-    if ($data != null) { 
-        $property = DB::table('properties')->where('id', $data->id)->first();
-        $reservasi = DB::table('reservations')->where('id', $data->id_reservasi)->get();
-        $formattedPrice = 'Rp ' . number_format($property->price / 1, 2);
-
-        return view('history_penyewa', compact('property', 'reservasi', 'formattedPrice', 'data'));
-    } else {
-        return view('history_penyewa', compact('data'));
+    if ($data != null) {
+        foreach ($data as $history) {
+            $property = DB::table('properties')->where('id', $history->id_property)->first();
+            $reservasi = DB::table('reservations')->where('id', $history->id_reservasi)->first();
+            $formattedPrice = 'Rp ' . number_format($property->price / 1, 2);
+            $history->property = $property;
+            $history->reservasi = $reservasi;
+            $history->harga = $formattedPrice;
+        }
     }
+
+    return view('history_penyewa', compact('data'));
+    
 });
 
 Route::get('/history_gedung/{id}', function ($id) {
-    $data = DB::table('histories')->where('id_property', $id)->first();
-    $property = DB::table('properties')->where('id', $id)->first();
+    $data = DB::table('histories')->where('id_property', $id)->get();
+    $property2 = DB::table('properties')->where('id', $id)->first();
+    if ($data != null) {
+        foreach ($data as $history) {
+            $property = DB::table('properties')->where('id', $history->id_property)->first();
+            $reservasi = DB::table('reservations')->where('id', $history->id_reservasi)->first();
+            $user = DB::table('users')->where('id', $history->id_user)->first();
+            $history->property = $property;
+            $history->reservasi = $reservasi;
+            $history->user = $user;
+        }
+    }
+
+    return view('history_pemilik', compact('data', 'property2'));
 
     
-    if ($data != null) {    
-        $reservasi = DB::table('reservations')->where('id', $data->id_reservasi)->get();
-        $property = DB::table('properties')->where('id', $data->id_property)->first();
-        $user = DB::table('users')->where('id', $data->id_user)->first();
-        return view('history_pemilik', compact('property', 'reservasi', 'user'));
-    }else {
-        $reservasi = null;
-        return view('history_pemilik', compact('data', 'property', 'reservasi'));
-    }
     
 });
 
@@ -166,6 +174,21 @@ Route::get('/list_gedung', function () {
     return view('list_property', ['data' => $data]);
 });
 
+Route::get('/list_reservasi', function () {
+    $data = DB::table('reservations')->get();
+
+    if ($data != null) {
+        foreach ($data as $reservation) {
+            $property = DB::table('properties')->where('id', $reservation->id_property)->first();
+            $user = DB::table('users')->where('id', $reservation->id_user)->first();
+            $reservation->property = $property;
+            $reservation->user = $user;
+        }
+    }
+
+    return view('List_reservasi', compact('data'));
+});
+
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
@@ -178,4 +201,5 @@ Route::post('/after_payment/{id}', [HistoryController::class, 'store']);
 Route::post('/review_add/{id}', [ReviewController::class, 'store']);
 Route::post('/edit_property/{id}', [PropertyController::class, 'update']);
 Route::post('/hapus_akun/{id}', [UserController::class, 'destroy']);
-Route::post('/add_property/{id}', [PropertyController::class, 'destroy']);
+Route::post('/hapus_property/{id}', [PropertyController::class, 'destroy']);
+Route::post('/hapus_reservasi/{id}', [ReservationController::class, 'destroy']);

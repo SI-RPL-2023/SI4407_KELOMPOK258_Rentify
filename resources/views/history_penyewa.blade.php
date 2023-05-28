@@ -21,7 +21,7 @@
         <div class="table-wrap">
             <center><table class="table table-responsive table-borderless"></center>
                 <thead>
-                    
+                    <th>Foto Gedung</th>
                     <th>Nama Gedung</th>
                     <th>Harga</th>
                     <th>Durasi</th>
@@ -35,31 +35,35 @@
                 
                 <tbody>
                 
-                    @foreach ($reservasi as $tampil)
+                    @foreach ($data as $tampil)
                     <tr class="align-middle alert border-bottom" role="alert">
-                        
+                        <td class="text-center">
+                            <img class="pic"
+                                src="{{ asset('storage/'.$tampil->property->image) }}" class="img-fluid" alt="">
+                                
+                        </td>
                         <td>
                             <div>
-                                <center><a class="m-0 fw-bold" href="/detail/{{$property->id}}">{{$property->property_name}}</a></center>
+                                <center><a class="m-0 fw-bold" href="/detail/{{$tampil->property->id}}">{{$tampil->property->property_name}}</a></center>
                             </div>
                         </td>
                         <td>
-                            <center><div class="">{{$formattedPrice}} /jam</div></center>
+                            <center><div class="">{{$tampil->property->price}} /jam</div></center>
                         </td>
                         <td>
-                            <center><div class="">{{$tampil->durasi}} jam</div></center>
+                            <center><div class="">{{$tampil->reservasi->durasi}} jam</div></center>
                         </td>
                         <td class="d-">
-                            <center><p>{{$tampil->created_at}}</p></center>
+                            <center><p>{{$tampil->reservasi->created_at}}</p></center>
                         </td>
                         <td>
-                            <center><p>{{$tampil->tanggal_sewa}}</p></center>
+                            <center><p>{{$tampil->reservasi->tanggal_sewa}}</p></center>
                         </td>
                         <td>
-                            <center><div class="fw-600">{{'Rp ' .number_format($tampil->total / 1, 2)}}</div></center>
+                            <center><div class="fw-600">Rp {{$tampil->harga}}</div></center>
                         </td>
                         <td>
-                            <form action="/review_add/{{$property->id}}" method="get">
+                            <form action="/review_add/{{$tampil->property->id}}" method="get">
                             <center><div class="graph-star-rating-footer text-center mt-3 mb-3">
                                         <button type="submit" class="btn btn-outline-success btn-lg" name="submit">Review</button>
                                     </div></center>
