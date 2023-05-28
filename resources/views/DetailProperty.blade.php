@@ -318,19 +318,19 @@
                         </div>
                         <p class="text-black mb-4 mt-2">Rated {{$rating}} out of 5</p>
                     </div>
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col">
                             <div class="rating-list-left text-black">
                                 5 Star
                             </div></div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: 56%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->lima/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">56%</div>
+                            <div class="col">{{($review->lima/$jumlah)*100}}%</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -338,12 +338,12 @@
                             </div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: 23%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->empat/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">23%</div>
+                            <div class="col">{{($review->empat/$jumlah)*100}}%</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -351,12 +351,12 @@
                             </div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: 11%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->tiga/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">11%</div>
+                            <div class="col">{{($review->tiga/$jumlah)*100}}%</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -364,17 +364,33 @@
                             </div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: 2%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->dua/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">02%</div>
+                            <div class="col">{{($review->dua/$jumlah)*100}}%</div>
                         </div>
-                    </div> -->
+                        <div class="row">
+                            <div class="col">
+                                1 Star
+                            </div>
+                            <div class="col-10">
+                                <div class="progress">
+                                    <div style="width: {{($review->satu/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                        <span class="sr-only">80% Complete (danger)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">{{($review->satu/$jumlah)*100}}%</div>
+                        </div>
+                    </div>
+                    <form action="/review_add/{{$data->id}}" method="get">
                     <div class="graph-star-rating-footer text-center mt-3 mb-3">
                         <button type="submit" class="btn btn-outline-success btn-lg" name="submit">Rate and Review</button>
                     </div>
+                    </form>
+                    
                 </div>
                 <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
                     <h5 class="mb-1">All Ratings and Reviews</h5>
@@ -454,30 +470,7 @@
                 @else
                 <center>No review(s) yet</p></center><p>
                     @endif
-                <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
-                    <h5 class="mb-4">Leave Comment</h5>
-                    <p class="mb-2">Rate the Place</p>
-                    <div class="mb-4">
-                        <span class= data-mdb-toggle>
-                            <i class="text-muted fa fa-star"></i>
-                            <i class="text-muted fa fa-star"></i>
-                            <i class="text-muted fa fa-star"></i>
-                            <i class="text-muted fa fa-star"></i>
-                            <i class="text-muted fa fa-star"></i>
-                                 </span>
-                    </div>
-                    <form>
-                        <div class="form-group">
-                            <label>Your Comment</label>
-                            <textarea class="form-control"></textarea>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <!-- <button type="submit" class="btn btn-outline-primary btn-lg" name="submit">Submit Comment</button> -->
-                            <button type="submit" class="btn btn-success" > Submit Comment </button>
-                        </div>
-                    </form>
-                </div>
+                
             </section>
     
             

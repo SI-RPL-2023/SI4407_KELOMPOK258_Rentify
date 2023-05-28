@@ -63,7 +63,16 @@ Route::get('/detail/{id}', function ($id) {
     $review2 = DB::table('reviews')->where('id_property', $id)->get();
     $rating = 0;
     $jumlah = 0;
-
+    $satu = count(DB::table('reviews')->where('id_property', $id)->where('rating', 1)->get());
+    $review->satu = $satu;
+    $dua = count(DB::table('reviews')->where('id_property', $id)->where('rating', 2)->get());
+    $review->dua = $dua;
+    $tiga = count(DB::table('reviews')->where('id_property', $id)->where('rating', 3)->get());
+    $review->tiga = $tiga;
+    $empat = count(DB::table('reviews')->where('id_property', $id)->where('rating', 4)->get());
+    $review->empat = $empat;
+    $lima = count(DB::table('reviews')->where('id_property', $id)->where('rating', 5)->get());
+    $review->lima = $lima;
     $user = null;
 
     if ($review != null) {
