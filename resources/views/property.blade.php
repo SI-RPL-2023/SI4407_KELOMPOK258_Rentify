@@ -46,16 +46,66 @@
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
                         <a href="/detail/{{ $tampil->id}}">
-                            <img src="{{ asset('storage/'.$tampil->image) }}" class="card-img-top" alt="...">
+                            <img src="{{ asset('storage/'.$tampil->image) }}" class="card-img-top" alt="..." style="height: 250px;">
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                @if ($tampil->rating == 5)
+                                
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                            @elseif ($tampil->rating >= 4)
+                                
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @elseif ($tampil->rating >= 3)
+                            
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @elseif ($tampil->rating >= 2)
+                                
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @elseif ($tampil->rating >= 1)
+                                
+                                <a href="#"><i class="fa fa-star text-warning"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @else
+                                
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                <a href="#"><i class="fa fa-star text-secondary"></i></a>
+                                
+                            @endif
+                                </li>
                                 
                                 <li class="text-warning text-right">{{'Rp ' .number_format($tampil->price / 1, 2)}} /jam</li>
                             </ul>
                             <a href="/detail/{{ $tampil->id}}" class="h2 text-decoration-none text-dark">{{ $tampil->property_name}}</a>
                             <p>{{ $tampil->lokasi}}</p>
-                            
+                            <p class="text-muted" style="vertical-align: bottom;">Reviews ({{ $tampil->jumlah}})</p>
                         </div>
                     </div>
                 </div>

@@ -325,12 +325,12 @@
                             </div></div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: {{($review->lima/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->lima)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">{{($review->lima/$jumlah)*100}}%</div>
+                            <div class="col">{{($review->lima)*100}}%</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -338,12 +338,12 @@
                             </div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: {{($review->empat/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->empat)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">{{($review->empat/$jumlah)*100}}%</div>
+                            <div class="col">{{($review->empat)*100}}%</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -351,12 +351,12 @@
                             </div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: {{($review->tiga/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->tiga)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">{{($review->tiga/$jumlah)*100}}%</div>
+                            <div class="col">{{($review->tiga)*100}}%</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -364,12 +364,12 @@
                             </div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: {{($review->dua/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->dua)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">{{($review->dua/$jumlah)*100}}%</div>
+                            <div class="col">{{($review->dua)*100}}%</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -377,12 +377,12 @@
                             </div>
                             <div class="col-10">
                                 <div class="progress">
-                                    <div style="width: {{($review->satu/$jumlah)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
+                                    <div style="width: {{($review->satu)*100}}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-success">
                                         <span class="sr-only">80% Complete (danger)</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col">{{($review->satu/$jumlah)*100}}%</div>
+                            <div class="col">{{($review->satu)*100}}%</div>
                         </div>
                     </div>
                     <form action="/review_add/{{$data->id}}" method="get">

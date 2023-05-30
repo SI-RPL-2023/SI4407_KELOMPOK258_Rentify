@@ -54,7 +54,33 @@ Route::get('/edit_property/{id}', function ($id) {
 
 Route::get('/property', function () {
     $data = DB::table('properties')->get();
-    return view('property', ['data' => $data]);
+
+    foreach ($data as $property) {
+        $reviews = DB::table('reviews')->where('id_property', $property->id)->get();
+
+        $rating = 0;
+        $jumlah = 0;
+        $satu = count($reviews->where('rating', 1));
+        $dua = count($reviews->where('rating', 2));
+        $tiga = count($reviews->where('rating', 3));
+        $empat = count($reviews->where('rating', 4));
+        $lima = count($reviews->where('rating', 5));
+
+        $user = null;
+
+        if ($reviews != null) {
+            foreach ($reviews as $review) {
+                $user = User::where('id', $review->id_user)->first();
+                $rating += $review->rating;
+                $jumlah += 1;
+            }
+        }
+
+        $property->rating = $rating;
+        $property->jumlah = $jumlah;
+    }
+
+    return view('property', compact('data'));
 });
 
 Route::get('/detail/{id}', function ($id) {
@@ -64,15 +90,15 @@ Route::get('/detail/{id}', function ($id) {
     $rating = 0;
     $jumlah = 0;
     $satu = count(DB::table('reviews')->where('id_property', $id)->where('rating', 1)->get());
-    $review->satu = $satu;
+    
     $dua = count(DB::table('reviews')->where('id_property', $id)->where('rating', 2)->get());
-    $review->dua = $dua;
+    
     $tiga = count(DB::table('reviews')->where('id_property', $id)->where('rating', 3)->get());
-    $review->tiga = $tiga;
+    
     $empat = count(DB::table('reviews')->where('id_property', $id)->where('rating', 4)->get());
-    $review->empat = $empat;
+    
     $lima = count(DB::table('reviews')->where('id_property', $id)->where('rating', 5)->get());
-    $review->lima = $lima;
+    
     $user = null;
 
     if ($review != null) {
@@ -83,8 +109,19 @@ Route::get('/detail/{id}', function ($id) {
         }
         
     }
-    $rating = $rating/$jumlah;
-
+    if ($jumlah > 0) {
+        $rating = $rating/$jumlah;
+        $satu = $satu/$jumlah;
+        $dua = $dua/$jumlah;
+        $tiga = $tiga/$jumlah;
+        $empat = $empat/$jumlah;
+        $lima = $lima/$jumlah;
+    }
+    $review->satu = $satu;
+    $review->dua = $dua;
+    $review->tiga = $tiga;
+    $review->empat = $empat;
+    $review->lima = $lima;
     $price = 'Rp ' . number_format($data->price / 1, 2);
     return view('DetailProperty', compact('data', 'price', 'review', 'rating', 'user', 'jumlah'));
 });
